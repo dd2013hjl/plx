@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{margin: 0px;padding: 0px;}
+	body{background: #ddd;}
+	#content{width: 800px;height:600px;border-top:1px solid black;border-left: 1px solid black;padding-top: 50px;margin: 60px auto;position: relative;}
+	#content>p{width: 600px;height: 300px;background: #fff;font: 20px '黑体';text-indent: 2em;line-height: 1.5em;padding:20px;margin-left:30px;}
+	ul{position: absolute;top: 50px;left:683px;}
+	li{list-style: none;background: #666;}
+	li:nth-child(2),li:last-child{display: none;}
+	ul a{text-decoration: none;font:bold 18px '微软雅黑';width:80px;height:60px;display: block;line-height: 60px;text-align: center;color: #fff;border-bottom: 1px solid #fff;}
+	#oprate {width: 600px;height: 120px;border: 10px solid pink;padding: 20px;margin:20px 20px;background: #999;display:none;overflow: hidden;}
+	#oprate p:first-child{width: 550px;margin: 0px auto;border-bottom: 5px solid orange;overflow: hidden;}
+	#oprate>p>a{padding: 10px 15px;float: left; color:black; font:18px '微软雅黑';text-decoration: none;}
+	#oprate	.active{background: orange;font:bold 18px '微软雅黑';color:#fff;}
+	#oprate p:nth-child(2),p:last-child{width: 550px;height: 90px;margin: 0px auto;line-height: 90px;}
+	#oprate input{padding: 5px;}
+	</style>
+	<script>
+	window.onload = function (){
+		var oAt = document.getElementById('articler');
+		var oList = document.getElementById('list');
+		var aLi = oList.getElementsByTagName('li');
+		var oPr = document.getElementById('oprate');
+		var aA = oPr.getElementsByTagName('a');
+		var aP = oPr.getElementsByTagName('p');
+		var aIpt = oPr.getElementsByTagName('input');
+		var onoff=true;
+		var str1 = oAt.innerHTML;
+		oList.onclick = function(){
+			if(onoff){
+				aLi[1].style.display='block';
+				aLi[2].style.display='block';
+				onoff=false;
+			}else{
+				aLi[1].style.display='none';
+				aLi[2].style.display='none';
+				onoff=true;
+			}
+		}
+		aLi[1].onmouseover=function(){
+		this.style.backgroundColor = 'orange';
+		}
+		aLi[1].onmouseout=function (){
+		this.style.backgroundColor = '#666';	
+		}
+		aLi[2].onmouseover=function(){
+			this.style.backgroundColor = 'orange';
+		}
+		aLi[2].onmouseout=function (){
+		this.style.backgroundColor = '#666';	
+		}
+		aLi[1].onclick=function(){
+			oPr.style.display='block';
+			aA[0].className='active'
+		}
+		aLi[1].onclick=function(ev){
+			oPr.style.display='block';
+			aA[0].className='active';
+			aP[1].style.display='block';
+			aA[1].className='';
+			var ev= ev||event;
+			ev.cancelBubble=true;
+		}
+		aLi[2].onclick=function(ev){
+			oPr.style.display='block';
+			aA[0].className='';
+			aA[1].className='active';
+			aP[1].style.display='none';
+			var ev= ev||event;
+			ev.cancelBubble=true;
+		}
+		aA[0].onclick=function(){
+			for(var i=0;i<aA.length;i++)
+			{
+				aA[i].className='none';
+			}
+			this.className='active';
+			aP[1].style.display='block';
+		}
+		aA[1].onclick=function(){
+			for(var i=0;i<aA.length;i++)
+			{
+				aA[i].className='none';
+			}
+			this.className='active';
+			aP[1].style.display='none';
+		}
+		aIpt[1].onclick=function(){
+			var str=aIpt[0].value;
+			if(!str){return};
+			if(str1.indexOf(str)!=-1)
+			{
+				oAt.innerHTML=str1;
+				var arr=oAt.innerHTML.split(str);
+				str = arr.join('<span style="background:yellow;">'+str+'</span>');
+				oAt.innerHTML=str;
+			}else{
+				alert('未查找到');
+				aIpt[0].value='';
+			}
+		}
+		aIpt[4].onclick=function(){
+			var str2=aIpt[2].value;
+			var str3 = aIpt[3].value;
+			if(!str2){return};
+			if(str1.indexOf(str2)!=-1)
+			{
+				oAt.innerHTML=str1;
+				var arr=oAt.innerHTML.split(str2);
+				str2 = arr.join('<span style="background:yellow;">'+str3+'</span>');
+				oAt.innerHTML=str2;
+			}else{
+				alert('未查找到');
+				aIpt[2].value='';
+				aIpt[3].value='';
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="content">
+		<p id="articler">简要介绍Linux操作系统服务器的配置与管理，包括Web服务器的安装和配置，FTP服务器的配置和维护，域名服务器(DNS)的配置和维护，Samba服务器的安装与使用，邮件服务器的配置和使用；<br/>最后对网络安全、性能调优、集群管理进行。了探讨。这些内容是Linux的精彩之处，也是广大Linux用户、系统管理员和网络管理员最为关心的问题。的配置和维护，Samba服务器的安装与使用，邮件服务器的配置和使用；<br/>最后对网络安全、性能调优、集群管理进行。了探讨。这些内容是Linux的精彩之处，也是广大Linux用户、系统管理员和网络管理员最为关心的问题。
+		</p>
+		<ul id="list">
+			<li>
+				<a href="javascript:;">展开</a>
+			</li>
+			<li>
+				<a href="javascript:;">查找</a>
+			</li>
+			<li>
+				<a href="javascript:;">替换</a>
+			</li>
+		</ul>
+		<div id="oprate">
+			<p>
+				<a href="javascript:;">查找</a>
+				<a href="javascript:;">替换</a>
+			</p>
+			<p>
+				<input type="text" value="">
+				<input type="button" value="查找">
+			</p>
+			<p>
+				<input type="text" value=""> 
+				<input type="text" value="">
+				<input type="button" value="替换">
+			</p>
+		</div>
+	</div>
+</body>
+</html>

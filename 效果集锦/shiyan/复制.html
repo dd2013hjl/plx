@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>clipboard示例</title>
+    <script src="../dist/clipboard.min.js"></script>
+</head>
+<style>
+p {
+    font-size: 20px;
+}
+
+input {
+    width: 300px;
+    height: 30px;
+}
+
+</style>
+<body>
+    <p id="p1">这是P1标签</p>
+    <br/>
+    <p id="p2">这是P2标签</p>
+    <br/>
+    <input id="input" type="text" value="这里是输入框标签">
+    <br/>
+    <br/>
+    <textarea id="textarea" rows="3" cols="20">这里是textarea标签</textarea>
+
+    <br/>
+    <br/>
+    <button onclick="copyToClipboard('p1')">复制P1</button>
+    <button onclick="copyToClipboard('p2')">复制P2</button>
+    <button onclick="copyToClipboard('input')">复制input</button>
+    <button onclick="  ('textarea')">复制textarea</button>
+
+    <br/>
+    <br/>
+    <input type="text" placeholder="请将复制的内容右键粘贴进行查看" />
+</body>
+<script>
+    function copyToClipboard(elementId) {
+      // 创建元素用于复制
+      var aux = document.createElement("input");
+
+      // 获取复制内容
+      var content = document.getElementById(elementId).innerHTML || document.getElementById(elementId).value;
+    
+      // 设置元素内容
+      aux.setAttribute("value", content);
+    
+      // 将元素插入页面进行调用
+      document.body.appendChild(aux);
+    
+      // 复制内容
+      aux.select();
+    
+      // 将内容复制到剪贴板
+      document.execCommand("copy");
+    
+      // 删除创建元素
+      document.body.removeChild(aux);
+    }
+</script>
+</html>

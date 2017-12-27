@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>使用jquery生成二维码分享到微信</title>
+</head>
+
+<body>
+       <div id="qrode"></div>
+       <script src="js/jquery-3.1.1.js"></script>
+       
+ <script type="text/javascript" src="http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+<script>
+	$("qrode").qrode({
+		width:150,
+		height:150,
+		text:$(location).attr("href")
+	});
+	</script>
+</body>
+</html>

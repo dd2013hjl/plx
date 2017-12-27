@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>发送ajax</title>
+</head>
+<body>
+	<script type="text/javascript">
+	function success(text){
+		var textarea=document.getElementById('test-response-text');
+		textarea.value=text;
+	}
+	function fail(code){
+		var textarea=document.getElementById("test-response-text");
+		textarea.value="Error code :"+code;
+	}
+	var request;
+	if(window.XMLHttpRequest){
+		request=new XMLHttpRequest;
+	}else{
+		request=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+
+	function getPrice() {
+    var js = document.createElement('script'),
+        head = document.getElementsByTagName('head')[0];
+    js.src = 'http://api.money.126.net/data/feed/0000001,1399001?callback=refreshPrice';
+    head.appendChild(js);
+}
+	</script>
+</body>
+</html>

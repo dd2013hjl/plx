@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+  <title>css帧动画</title>
+  <style>
+    div{border:1px dashed #CCC;margin:3em auto;width:10%;height:0;padding-top:16.6666%;background:url(http://www1.w3cfuns.com/data/attachment/forum/201405/22/165704gaxmja87rco8pjum.png) no-repeat;background-size:auto 100%;
+     -webkit-animation:jump 1s steps(7,start) infinite;
+     animation:jump 1s steps(7,start) infinite;
+}
+
+    @-webkit-keyframes jump{
+      0%{background-position:-16.6666% 0;}
+      100%{background-position:100% 0;}
+    }
+    @keyframes jump{
+      0%{background-position:-16.6666% 0;}
+      100%{background-position:100% 0;}
+    }
+  </style>
+ </head>
+ <body>
+    <div></div>
+ </body>
+</html>

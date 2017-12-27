@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>分享二维码</title>
+<style type="text/css">
+            #weixinDiv{
+                background-color:#FFF;
+                border: 1px solid ;
+                width:300px;
+                height:300px;
+                /*下面是页面固定居中*/
+                position:fixed;
+                *position:absolute; 
+                top:50%; 
+                left:40%; 
+                margin:-50px 0 0 -50px;
+            }
+            #hideWeiXinDiv{
+                text-align: right;
+                float: right;
+                padding-right: 10px;
+                padding-top: 2px;
+				cursor: pointer;
+            }
+            #qrcode{
+                width:200px;
+                height:200px;
+                margin: 0px auto;
+            }
+        </style>
+</head>
+
+<body>
+ <div id="weixinDiv">
+            <div>
+                <h3 style="float: left;">分享到微信朋友圈</h3>
+                <a id="hideWeiXinDiv" onclick="hideWeiXin()">关闭</a>
+            </div>
+            <div id="qrcode">
+                <img alt="" style="">
+            </div>
+        </div>
+<script src="js/qrcode.js"></script>
+<script>
+	 window.onload = function() {
+                (function() {
+                    //获取放置微信二维码的DIV
+                    var content = document.getElementById("qrcode");
+                    //设置属性
+                    var qrcode = new QRCode(content, {
+                        width: 200,
+                        height: 200
+                    });
+                    //设置二维码内容
+                    var defaultContent = "http://www.ddway.cn:4000";
+                    qrcode.makeCode(defaultContent);
+					
+					
+                })();
+            }
+
+            /**
+             * 关闭微信分享窗口
+             */
+            function hideWeiXin() {
+                var weixinDiv = document.getElementById("weixinDiv");
+                weixinDiv.style.display = "none";
+            }
+	</script>
+</body>
+</html>

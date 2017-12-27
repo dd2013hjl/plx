@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width">
+<meta name="format-detection" content="telephone=no,email=no,adress=no"/>
+<meta name="full-screen" content="yes">
+<meta name="x5-fullscreen" content="true"></meta>
+<meta name="browsermode" content="application">
+<meta name="x5-page-mode" content="app">
+<title>HTML5</title>
+<link href="css/css.css" rel="stylesheet"/>
+</head>
+<style>
+@charset "utf-8";
+/* CSS Document */
+html{
+	-webkit-text-size-adjust:100%;
+	-ms-text-size-adjust:100%;
+	font-size:62.5%;/*相当于10px*/
+	}
+
+html *{
+	tap-highlight-color:rgba(0,0,0,.05);/*ios的Safari浏览器的链接点击时的效果*/
+	-webkit-tap-highlight-color:rgba(0,0,0,.05);
+	-ms-tap-highlight-color:rgba(0,0,0,.05);
+	margin:0;
+	padding:0;
+	}
+body{
+	font-size:1.4rem;/*14px*/
+	font-family:"微软雅黑";
+	}
+article,aside,details,figure,figcaption,footer,header,hgroup,main,menu,nav,section,summary {
+	display:block
+	}
+ul{overflow:hidden;}
+ul li{list-style:none;}
+a:link {
+	color: #666;
+	text-decoration: none;
+}
+a:visited {
+	color: #666;
+	text-decoration: none;	
+}
+a:hover {
+	color: #09C;
+	text-decoration: none;	
+}
+a:active {
+	color: #09C;
+	text-decoration: none;	
+}
+img{-ms-interpolation-mode:bicubic;width:100%;}
+.left{ float:left;}
+.right{ float:right;}
+
+
+/*首页banner*/
+@keyframes scal{
+	from{-webkit-transform: scale(1,1);}
+	to{-webkit-transform: scale(1.1,1.1);}
+}
+@-webkit-keyframes scal{
+	from{-webkit-transform: scale(1,1);}
+	to{-webkit-transform: scale(1.1,1.1);}
+}
+#banner{
+	width: 100%;
+	overflow: hidden;
+	float: left;
+	position: relative;
+}
+
+#banner .banner_in{
+	width: 100%;
+	min-height: 480px;
+	transform: scale(1,1);
+	-webkit-transform: scale(1,1);
+	animation:scal 10s ease infinite alternate ;
+	-webkit-animation:scal 10s ease infinite alternate ;
+}
+
+</style>
+<body>
+	<div id="banner">
+			<div class="banner_in" id="banner01"><img src="https://i.alipayobjects.com/i/ecmng/jpg/201501/4JdidBF3Kn.jpg"/></div>
+	</div>
+</body>
+</html>

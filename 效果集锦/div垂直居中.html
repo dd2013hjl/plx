@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+	
+	</style>
+</head>
+
+<body>
+<!--<img  src="img/1.jpg">-->
+<span style="font-size:14px; color:#009900"> 
+<!--图片地址 后面加时间戳是为了避免缓存  -->
+<script>
+var img_url = 'http://www.qttc.net/static/upload/2013/13643608813441.jpg?'+Date.parse(new Date());  
+   
+//<!--// 创建对象  -->
+var img = new Image();  
+   
+//<!--// 改变图片的src  -->
+img.src = img_url;  
+   
+//<!--// 打印  -->
+	if(img.complete){
+		alert('from:complete:width:'+img.width+',height:'+img.height);
+	}else{
+		img.onload=function(){
+		alert('from:onload:width:'+img.width+',height:'+img.height);
+	}
+	}
+
+	</script>
+
+</span> 
+ <script>
+//        document.addEventListener('DOMContentLoaded',function(){
+//            function getImgNaturalStyle(img,callback) {
+//                var nWidth, nHeight
+//                if (img.naturalWidth) { // 现代浏览器
+//                    nWidth = img.naturalWidth
+//                    nHeight = img.naturalHeight
+//                } else {  // IE6/7/8
+//                    var imgae = new Image();
+//                    image.src = img.src;
+//                    image.onload = function(){
+//                        callback(image.width, image.height)
+//                    }
+//                }
+//                return [nWidth, nHeight]
+//            }
+//            var img = document.getElementsByTagName('img')[0],
+//                    imgNatural = getImgNaturalStyle(img);
+//            alert(imgNatural);
+//        });
+    </script>
+</body>
+</html>

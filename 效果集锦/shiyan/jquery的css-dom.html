@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+	
+	.div{margin-top: 50px;height: 200px;}
+	</style>
+</head>
+
+<body>
+<!--
+<p>第yi款</p>
+<div class="div">
+	我是一块div的
+</div>
+<p>第二款</p>
+-->
+
+<p><a href="#" class="tooltips" title="这是我的超链接提示">提示1</a></p>
+<p><a href="#" class="tooltips" title="这是我的超链接提示">提示2</a></p>
+<p><a href="#" title="这是自带提示">自带提示1</a></p>
+<p><a href="#" title="这是自带提示">自带提示2</a></p>
+<a href="http://www.baidu.com" title="这是我的超链接提示">进入百度啊</a>
+<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+	
+	
+	$(function(){
+//		$("p").click(function(){
+//			var x=$(this).offset();
+//			alert(x.top);
+//		});
+//		$("p").click(function(){
+//			var y=$(this).position();
+//			alert(y.top);
+//		})
+
+		$("a.tooltip").mouseover(function(){
+			this.myTitle=this.title;
+			this.title="";
+			var tooltip="<div id='tooltip'>"+this.title+"</div>";
+			$("body").append(tooltip);//把它追加到文档中
+			var x=10;
+			var y=20;
+			$("#tooltip")
+					.css({
+						"top":(e.pageY+y)+"px",
+						"left":(e.pageX+x)+"px"
+			}).show("fast");
+			
+		}).mouseout(function(){
+			$("#tooltip").remove();
+		}).mousemove(function(){
+			$("#tooltip")
+				.css({
+						"top":(e.pageY+y)+"px",
+						"left":(e.pageX+x)+"px"
+			});
+		});
+	})
+	</script>
+</body>
+</html>

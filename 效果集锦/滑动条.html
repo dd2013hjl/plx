@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>原生js实现可拖拽进度条效果</title>
+		<style>
+			.scale_panel {
+				margin-top: 50px;
+				width: 600px;
+				position: relative;
+				line-height: 18px;
+				left: 60px;
+				top: -0px;
+			}
+			
+			.scale .jindu_btn {
+				position: absolute;
+				left: -10px;
+				top: 10px;
+				height: 18px;
+				width: 18px;
+				background-color: #00ffff;
+				-webkit-border-radius: 20px;
+				-moz-border-radius: 20px;
+				border-radius: 20px;
+				margin-top: -18px;
+				cursor: pointer;
+			}
+			
+			.jindu_btn span {
+				font-size: 16px;
+				position: absolute;
+				top: -20px;
+				left: 0px;
+			}
+			
+			.scale {
+				background-repeat: repeat-x;
+				background-position: 0 100%;
+				background-color: #efefef;
+				width: 600px;
+				height: 5px;
+				position: relative;
+				font-size: 0px;
+				-webkit-border-radius: 3px;
+				-moz-border-radius: 3px;
+				border-radius: 3px;
+			}
+			
+			.scale div {
+				background-repeat: repeat-x;
+				background-color: #00ffff;
+				width: 0px;
+				position: absolute;
+				height: 5px;
+				width: 0;
+				left: 0;
+				bottom: 0;
+				border-radius: 3px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="scale_panel">
+			<div class="scale" id="bar">
+<!--			整个长度-->
+				<div id="jingxing"></div>
+<!--				变了色-->
+				<div class="jindu_btn" id="btn">
+					<span id="title">0%</span>
+				</div>
+			</div>
+		</div>
+		<script>
+			var scale = function(btn, bar, title) {
+				this.btn = document.getElementById(btn);
+				this.bar = document.getElementById(bar);
+				this.title = document.getElementById(title);
+				this.step = this.bar.getElementsByTagName("div")[0];
+				this.init();
+			};
+			scale.prototype = {
+				init: function() {
+					var f = this,
+						g = document,
+						b = window,
+						m = Math;
+					f.btn.onmousedown = function(e) {
+						var x = (e || b.event).clientX;
+						var l = this.offsetLeft;
+						var max = f.bar.offsetWidth - this.offsetWidth;
+						g.onmousemove = function(e) {
+							var thisX = (e || b.event).clientX;
+							var to = m.min(max, m.max(-2, l + (thisX - x)));
+							f.btn.style.left = to + 'px';
+							f.ondrag(m.round(m.max(0, to / max) * 100), to);
+							b.getSelection ? b.getSelection().removeAllRanges() : g.selection.empty();
+						};
+						g.onmouseup = new Function('this.onmousemove=null');
+					};
+				},
+				ondrag: function(pos, x) {
+					this.step.style.width = Math.max(0, x) + 'px';
+					this.title.innerHTML = pos + '%';
+				}
+			}
+			new scale('btn', 'bar', 'title');
+		</script>
+	</body>
+
+</html>

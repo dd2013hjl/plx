@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>五角星评分案例</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .comment {
+      font-size: 40px;
+      color: teal;
+    }
+
+    .comment li {
+      float: left;
+    }
+
+    ul {
+      list-style: none;
+      width: 300px;
+      margin: 100px auto;
+    }
+  </style>
+  <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js">
+  <script>
+    $(function () {
+      var wjx_k = "☆";
+      var wjx_s = "★";
+
+/*鼠标移上去的时候让当前的五角星以及前面的五角星为实心，后面的为空心*/
+     $('.comment li').on('mouseenter',function(){
+       $(this).text(wjx_s).prevAll().text(wjx_s).end().nextAll().text(wjx_k);
+     })
+
+/*鼠标移开的时候让所有的li变成空心五角星，除非你点击了再离开，点击后离开会有aa类名作为标志*/
+      $('.comment').on('mouseleave',function(){
+          $(this).children().text(wjx_k);
+        $('.aa').text(wjx_s).prevAll().text(wjx_s);
+      })
+
+/*鼠标点击添加给当前点击的五角星添加一个类名为aa来作为鼠标移开后的判断标准*/
+      $('.comment li').on('click',function(){
+        $(this).addClass('aa').siblings().removeClass('aa');
+      })
+    });
+  </script>
+</head>
+
+<body>
+<ul class="comment">
+  <li>☆</li>
+  <li>☆</li>
+  <li>☆</li>
+  <li>☆</li>
+  <li>☆</li>
+</ul>
+</body>
+
+</html>

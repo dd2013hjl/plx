@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<!-- 	<p id="js">JavaScript</p>
+<div id="list">
+    <p id="java">Java</p>
+    <p id="python">Python</p>
+    <p id="scheme">Scheme</p>
+</div> -->
+<div id="list">
+    <p id="java">Java</p>
+    <p id="python">Python</p>
+    <p id="scheme">Scheme</p>
+</div>
+
+<script>
+	// var js = document.getElementById('js'),
+ //    list = document.getElementById('list');
+	// list.appendChild(js);
+	// 
+	var list = document.getElementById('list'),
+    haskell = document.createElement('p');
+	haskell.id = 'haskell';
+	haskell.innerText = 'Haskell';
+	list.appendChild(haskell);
+	// 动态创建<style>，把它添加到<head>节点的末尾。实现动态给文档添加新的css
+	var d = document.createElement('style');
+	d.setAttribute('type', 'text/css');
+	d.innerHTML = 'p { color: red }';
+	document.getElementsByTagName('head')[0].appendChild(d);
+</script>
+</body>
+</html>

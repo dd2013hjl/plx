@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<script>
+//	
+//	var arr = [1, 2, 3, 4];
+//
+//var sum = (a, b) => a + b;
+//
+//var c=arr.reduce(sum, 0) // 10
+//console.log(c);
+	
+	var arr = [1, 2, 3, 4];
+
+var sum = function (a, b) {
+  console.log(a, b);
+  return a + b;
+};
+
+console.log(arr.reduce(sum));// => 10
+// 1 2
+// 3 3
+// 6 4
+	</script>
+</body>
+</html>

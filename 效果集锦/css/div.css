@@ -1,0 +1,4 @@
+#content{width:100%;background-color:red;line-height:50px;text-align: center}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.leftpart{float:left;width:50%}
+.rightpart{float:left;width:50%}

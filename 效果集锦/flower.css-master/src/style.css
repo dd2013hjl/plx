@@ -1,0 +1,106 @@
+@font-face {
+	font-family: 'FuturaStd';
+	src:url('FuturaStd.otf') format('truetype');
+}
+*{
+	margin:0;
+	padding:0;
+	font-family: 'Microsoft Yahei';
+}
+body{
+	background:-webkit-linear-gradient(to right, #9A8FC6 , #560099);
+	background:linear-gradient(to right, #9A8FC6 , #560099);
+}
+.main{
+	width:100%;
+	height:200px;
+	margin:300px 0;
+	text-align: center;
+}
+/* .main .logo{
+	width:300px;
+	height:300px;
+	margin:0 auto;
+	padding-top:100px;
+	text-align: center;
+}
+@keyframes Ro{
+	0%{
+		transform:rotate(0deg);
+	}
+	100%{
+		transform:rotate(360deg);
+	}
+}
+@-webkit-keyframes Ro{
+	0%{
+		transform:rotate(0deg);
+	}
+	100%{
+		transform:rotate(360deg);
+	}
+}
+.logo span{
+	display: block;
+	font-family:'iconfont';
+	font-size:17em;
+	color:#fff;
+	-webkit-animation:Ro 10s 0s infinite linear;
+	animation:Ro 10s 0s infinite linear;
+	background-image: -webkit-linear-gradient(90deg,#D664FF,#fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+} */
+.main > span{
+	font-size:6em;
+	font-family:'FuturaStd';
+	color: #fff;
+    background-image: -webkit-linear-gradient(90deg,#D664FF,#fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.download{
+	color:#E7A8FF;
+	border:2px solid #E7A8FF;
+}
+.download:hover{
+	color:#E7A8FF;
+	border:2px solid #E7A8FF;
+}
+.download:hover:after,.download:hover:before{
+	color:#E7A8FF;
+}
+.container{
+	width:80%;
+	padding:20px;
+	background:#fff;
+	margin:50px auto;
+	text-align: center;
+}
+.container p{
+	color:#777;
+}
+.container p a{
+	color:#777;
+	text-decoration: none;
+}
+.container p a:hover{
+	text-decoration: underline;
+}
+.btn-show{
+	padding:20px 0;
+	width:100%;
+	height:auto;
+	text-align: center;
+}
+.btn-show p{
+	font-size:2em;
+	color:#560099;
+}
+.btn-show2{
+	padding:20px 0;
+	float: left;
+	width:12.5%;
+	height:auto;
+	text-align: center;
+}

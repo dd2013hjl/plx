@@ -1,0 +1,202 @@
+<!-- <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>CSS3 spirit精灵动画</title>
+		<style>
+		.bird{background: url(http://www.cj365.cc/demo/bird/bird.png);width: 140px;height:85px;animation: bird 2s steps(8) infinite;position: absolute;top: 50%;left: 50%;margin-top:  -43px;margin-left: -70px;}
+		@keyframes bird{
+			from {
+				background-position: 0 0;
+			}
+			to {
+				background-position: -800% 0px;
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<div class="bird"></div>
+	</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+span{position: relative;
+	display: block;
+	width: 100px;
+	height: 100px;
+	background-color: #ff5f71;
+	margin-bottom: 20px;
+	text-align: center;
+	border-radius: 1000px;
+}
+
+/*旋转*/
+.rotate{
+	animation-name:spin; 
+	animation-duration:5s; 
+	animation-timing-function:linear;
+	animation-iteration-count:infinite; 
+	animation-delay:1s;
+}
+@keyframes spin{
+	100% {transform: rotate(1turn);}
+}
+/*旋转*/
+
+/*X轴移入*/
+.translateX{ 
+	animation-name:clou;
+	animation-duration:5s;
+	animation-iteration-count:infinite; 
+	/*animation-play-state:paused;*/
+} 
+	
+@keyframes clou{
+	0% { transform:translateX(700px);}
+	50% { transform:translateX(0); }
+	100% {transform:translateX(700px);}
+}
+/*X轴移入*/
+
+/*X轴移入*/
+.translateY{
+	animation-name:shop;
+	animation-duration:5s;
+	animation-iteration-count:infinite; 
+	/*animation-play-state:paused;*/
+}
+@keyframes shop{
+	0% {transform:translateY(-640px);}
+	50% {transform:translateY(0);}
+	100% {transform:translateY(-640px);}
+}
+/*X轴移入*/
+
+/*上下无限循环移动*/
+.TB{
+	-webkit-animation: topBottom 2.5s ease-in-out infinite alternate;
+	-moz-animation: topBottom 2.5s ease-in-out infinite alternate;
+	-ms-animation: topBottom 2.5s ease-in-out infinite alternate;
+	-o-animation: topBottom 2.5s ease-in-out infinite alternate;
+	animation: topBottom 2.5s ease-in-out infinite alternate
+}
+@keyframes topBottom{
+	0% {transform:translateY(15px);}
+	50% {transform:translateY(0);}
+	100% {transform:translateY(15px);}
+}
+/*上下无限循环移动*/
+
+/*围绕四周移动*/
+.translateXY{
+	animation-name:translateXY4;
+	animation-duration:5s;
+	animation-iteration-count:infinite; 
+	/*animation-play-state:paused;*/
+}
+@keyframes translateXY4
+{
+0%   {background:red; left:0px; top:0px;}
+25%  {background:yellow; left:200px; top:0px;}
+50%  {background:blue; left:200px; top:200px;}
+75%  {background:green; left:0px; top:200px;}
+100% {background:red; left:0px; top:0px;}
+}
+/*围绕四周移动*/
+
+/*以Y轴旋转*/
+.translateAll{
+	animation-name:translateAllT;
+	animation-duration:5s;
+	animation-iteration-count:infinite;
+}
+@keyframes translateAllT{
+	0% {transform: rotateY(180deg);}
+	50% {transform: rotateY(0);}
+	100% {transform: rotateY(180deg);}
+}
+/*以Y轴旋转*/
+
+/*图片逐帧加载动画效果*/
+#frame {
+  width: 50px;
+  height: 72px;
+  border: 1px solid transparent;
+  background: url(http://s.cdpn.io/79/sprite-steps.png) no-repeat left top;
+  animation: frame-animation 1s steps(10) infinite;    
+}
+
+@keyframes frame-animation{ 
+	0% { background-position: 0px 0; } 
+	100% { background-position: -500px 0; } 
+}
+/*图片逐帧加载动画效果*/
+</style>
+<body>
+	<span class="rotate">123</span>
+	<span class="translateX"></span>
+	<span class="translateY"></span>
+	<span class="TB"></span>
+	<span class="translateXY"></span>
+	<span class="translateAll">123</span>
+
+    <!-- 图片逐帧加载动画效果 -->
+	<div id="animation">
+	  <div id="frame"></div>
+	  <div id="roll"></div>
+	</div>
+	<!-- 图片逐帧加载动画效果 -->
+
+</body>
+</html>
+
+<script type="text/javascript">
+  //       方法一：
+		// animation-name: myfirst;
+		// animation-duration: 5s;
+		// animation-timing-function: linear;
+		// animation-delay: 2s;
+		// animation-iteration-count: infinite;
+		// animation-direction: alternate;
+		// animation-play-state: running;
+		// /* Firefox: */
+		// -moz-animation-name: myfirst;
+		// -moz-animation-duration: 5s;
+		// -moz-animation-timing-function: linear;
+		// -moz-animation-delay: 2s;
+		// -moz-animation-iteration-count: infinite;
+		// -moz-animation-direction: alternate;
+		// -moz-animation-play-state: running;
+		// /* Safari 和 Chrome: */
+		// -webkit-animation-name: myfirst;
+		// -webkit-animation-duration: 5s;
+		// -webkit-animation-timing-function: linear;
+		// -webkit-animation-delay: 2s;
+		// -webkit-animation-iteration-count: infinite;
+		// -webkit-animation-direction: alternate;
+		// -webkit-animation-play-state: running;
+		// /* Opera: */
+		// -o-animation-name: myfirst;
+		// -o-animation-duration: 5s;
+		// -o-animation-timing-function: linear;
+		// -o-animation-delay: 2s;
+		// -o-animation-iteration-count: infinite;
+		// -o-animation-direction: alternate;
+		// -o-animation-play-state: running;
+
+  //       方法二：
+		// animation: myfirst 5s linear 2s infinite alternate;
+		// /* Firefox: */
+		// -moz-animation: myfirst 5s linear 2s infinite alternate;
+		// /* Safari 和 Chrome: */
+		// -webkit-animation: myfirst 5s linear 2s infinite alternate;
+		// /* Opera: */
+		// -o-animation: myfirst 5s linear 2s infinite alternate;
+</script>

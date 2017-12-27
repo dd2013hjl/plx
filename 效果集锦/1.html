@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+	<title>登录</title>
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+	<div class="wrapper">
+	<div class="top">
+	<span class="left_arrow">
+		<span></span>
+		<span></span>
+	</span>
+	<p>我的报价单</p>
+	</div>
+		<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		</ul>
+	</div>
+	<div class="myaa">wd </div>
+	<canvas id="myCanvas"></canvas>
+	<script type="text/javascript">
+	document.createElement('myaa');
+	var c=document.getElementById('myCanvas');
+	var ctx=c.getContext('2d');
+	// ctx.fillStyle="#ff0000";
+	// ctx.fillRect(50,0,150,75);
+	// ctx.beginPath();
+	// ctx.arc(95,50,40,0,2*Math.PI);
+	// ctx.stroke();
+	// var x=c.getContext('2d');
+	// x.font="30px Arial";
+	// x.strokeText('hehehhh',100,120)
+	// 
+	var color=c.getContext('2d');
+	var gradient=ctx.createLinearGradient(0,0,170,0);
+	gradient.addColorStop('0','magenta');
+	gradient.addColorStop('0.5','cyan');
+	gradient.addColorStop('0.8','red');
+	gradient.addColorStop('1','pink');
+	color.strokeStyle=gradient;
+	color.font="30px Verdana"
+	color.strokeText('w3school.com.cn',10,50);
+	</script>
+</body>
+</html>

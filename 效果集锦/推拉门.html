@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拉窗效果</title>
+</head>
+<style>
+    *{margin:0;padding:0;list-style:none;background-color: #f1f2f6}
+    img{display: block}
+    .con{
+        width: 800px;
+        margin:100px auto;
+        position: relative;
+    }
+    .con_top{
+        position: absolute;
+        top:0px;
+        left: 0px;
+    }
+    .con_top_Img{
+        width: 500px;
+        height: 240px;
+        overflow: hidden;
+    }
+    .con_top_Img>img{
+        width: 800px;
+        height: 240px;
+    }
+    .con_top_btn{
+        width: 5px;
+        height: 100%;
+        background-color: #545763;
+        position: absolute;
+        top:0px;
+        right: 0px;
+        cursor: e-resize;
+    }
+    .con_top_btn img{
+        width: 18px;
+        height: 62px;
+        position: absolute;
+        top:50%;
+        left:-9px;
+        margin-top: -30px;
+    }
+    .con_top_btnSlide{
+        display: block;
+        width: 8px;
+        height: 16px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+        right: -60px;
+    }
+    .con_bottom{
+        width: 800px;
+        background-color: #f1f2f6;
+    }
+     .con_bottom>img{
+        width: 100%;
+        height: 240px;
+     }
+</style>
+<body>
+    <div class="con">
+        <div class="con_top">
+            <!-- 前面的盒子 -->
+            <div class="con_top_Img" ondragstart="return false;">
+                <img src="img/1.jpg">
+            </div>
+            <!-- 拖动按钮 -->
+            <div class="con_top_btn" ondragstart="return false">
+<!--              这个img实现的是类似小按钮的部分-->
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAB6CAYAAADXhPEfAAAAAXNSR0IArs4c6QAAAepJREFUeAHt3EFKA1EQBNCMSEBQj+ABVLyFN/FIkWw8ScRLiHqAeAMTyErHakkhPXQJhuj8RX34NF06mc6buBH93WSw+r6/RHSDfY19hn2Mvc+1xostse+x77queypfHINMsWfY79j/teJecc9pGioC7AfssVbc+3soNDHl2GsWSh2muEB9xD6IYMT1gXtfxRDxAR57mHD4miWEntGcR9LAeomBVhhk3z/au763dQzU73r1X1zXwmcnvS8PlDiKxkIFSooslDiKxkIFSooslDiKxkIFSooslDiKxkIFSooslDiKxkIFSooslDiKxkIFSooslDiKxkIFSooslDiKxkIFSooOU/dD87bapK+enhylftj89vt5vR8ZJVS1kJJhbiFKqGohJcPcQpRQ1UJKhrmFKKGqhZQMcwtRQlULKRnmFqKEqhZSMswtRAlVLaRkmFuIEqpaSMkwtxAlVLWQkmFuIUqo2pyQ/9JTPSrmzT0yD8RHo6qFlAxzC1FCVQspGeYWooSqFlIyzC1ECVUtpGSYW4gSqlpIyTC3ECVUtZCSYW4hSqhqISXDvEmhOCGglbUKoWUr02CO1xho0dBAi/iVXlsHAOBUifh/+3kDSvPtLJMJlNo6RCJ0tkPdoo56zEY3fFQYaNSDSD4BP6/F5kwbNoAAAAAASUVORK5CYII=">    
+            </div>
+        </div>
+        <!-- 后面的盒子 -->
+        <div class="con_bottom" ondragstart="return false;">
+            <img src="http://pic.qiantucdn.com/images/slideshow/58e44e7307494.png">
+        </div>
+    </div>
+<script type="text/javascript" charset="utf-8">
+    /*分别获取两个盒子*/
+     var Dw=document.getElementsByClassName('con_top_Img')[0];
+     var btn=document.getElementsByClassName('con_top_btn')[0];
+     //定义一个变量，用来判断鼠标滑动事件，刚开始是false状态
+     var open=false;     
+            //鼠标按下执行
+            btn.onmousedown = function(event){
+                event = event || window.event;
+                //变量为true
+                open=true;    
+                var x=btn.offsetLeft;
+                var mouse_x=event.pageX;
+                //鼠标滑动事件
+                document.onmousemove = function(event){
+                    event = event || window.event;
+                    //如果open为true,那么继续执行，否则
+                    if (open) {
+                        var move_x=event.pageX;
+                        var moveDistance=x+(move_x-mouse_x);
+                        if (moveDistance >=0 && moveDistance<=795) {
+                            btn.style.left = moveDistance+'px';
+                            Dw.style.width = moveDistance+'px';
+                        };
+                     }
+                }
+            }
+            //鼠标离开事件
+            document.onmouseup = function(){
+                open=false;
+            }
+</script>
+</body>
+</html>

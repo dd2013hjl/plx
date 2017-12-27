@@ -1,0 +1,27 @@
+/* CSS Document */
+body{background-color:#000;color:#fff;text-align: center;}
+h2{color:#eee;}
+/*
+@media(device-aspect-ratio :3/2){
+	body{
+		background-color: blue;
+	}
+}*/
+/*
+设置窗口是水平还是垂直
+@media(orientation:landscape){
+	body{
+		background:blue;
+	}
+}
+@media(orientation:portrait){
+	body{
+		background:pink;
+	}
+}*/
+/*
+@media(max-height:480px){
+	body{
+		background-color: orange;
+	}
+}*/

@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>倒计时验证</title>
+	<style type="text/css">
+form{margin:200px auto;width:500px;}
+label{font-size:14px;color:#555;line-height:40px;margin-right:10px;}
+input{width:212px;height:38px;border-style:none;padding:0 4px;border:1px solid #C8C8C8;margin-right:10px;outline:none;}
+.msgs{display:inline-block;width:104px;color:#fff;font-size:12px;border:1px solid #0697DA;text-align:center;height:30px;line-height:30px;background:#0697DA;cursor:pointer;}
+form .msgs1{background:#E6E6E6;color:#818080;border:1px solid #CCCCCC;}
+</style>
+</head>
+
+<body>
+<form>
+	<label style="float:left;">验&nbsp;&nbsp;证&nbsp;码</label>
+	<input type="text" class="c_code_msg" style="margin-right: 10px;">
+	<span class="msgs">获取短信验证码</span>
+</form>
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>适用浏览器：IE8、360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗.</p>
+<p>来源：<a href="http://www.xwcms.net/" target="_blank">xw素材网</a></p>
+</div>
+<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+<script type="text/javascript">
+$(function  () {
+    //获取短信验证码
+    var validCode=true;
+    $(".msgs").click (function  () {
+        var time=30;
+        var code=$(this);
+        if (validCode) {
+            validCode=false;
+            code.addClass("msgs1");
+        var t=setInterval(function  () {
+            time--;
+            code.html(time+"秒");
+            if (time==0) {
+                clearInterval(t);
+            code.html("重新获取");
+                validCode=true;
+            code.removeClass("msgs1");
+            }
+        },1000)
+        }
+    })
+})
+</script>
+</body>
+</html>

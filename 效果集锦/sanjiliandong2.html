@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript" src="http://www.xipwang.cn/js/jquery.min.js"></script>
+<script type="text/javascript" charset="gb2312" src="https://passport.baidu.com/js/sitedata_bas.js" ></script>
+<!-- <script type="text/javascript" src="city.js"></script> -->
+</head>
+
+<body>
+<select class="c1"></select>
+<select class="c2"></select>
+<select class="c3"></select>
+<script type="text/javascript">
+$(function(){
+	var  c1 ="";
+	var  c2 ="";
+	var  c3 =""	;
+	var  index1;
+	$.each(arrCity,function(i,index){debugger
+		c1+='<option>'+index.name+'</option>';			
+	});
+
+	$('.c1').on('change',function(){
+		var  name =$(this).val();
+		getBydata1(name);
+                 $(".c3").html('');
+		$(".c2").html(c2);
+
+		
+	});
+	$('.c2').on('change',function(){
+		var  name =$(this).val();
+		getBydata2(name);
+		$(".c3").html(c3);
+	
+	});	
+	function getBydata1(name){
+		 c2 ="";		
+		$.each(arrCity,function(i, index) {
+			if(name == index.name){
+				index1  = index;		
+				$.each(index.sub,function(i,index){								
+					c2+='<option>'+index.name+'</option>';
+				});
+				return false;
+			}				
+		});
+	}
+	function getBydata2(name){
+		 c3 ="";
+		$.each(index1.sub,function(i, index) {			
+			if(name == index.name){
+				try{
+					$.each(index.sub,function(i,index){						
+						c3+='<option>'+index.name+'</option>';
+					});
+					return false;				
+				}catch(err){
+					console.log(err);					
+				}
+				return false;
+			}				
+		});
+	}
+	$(".c1").html(c1);
+});
+</script>  
+
+</body>
+</html>

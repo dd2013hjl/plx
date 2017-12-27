@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>css3导航底部动画效果</title>
+
+<style>
+    /*css reset */
+body,p,div,ol,ul,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,form,input {
+    margin: 0;
+    padding: 0;
+} 
+body {
+    font: 14px Microsoft YaHei;
+    color: #999;
+    background: #eee;
+}
+a { 
+  text-decoration: none;
+    color: #999;
+}
+ol,ul {
+    list-style: none;
+}
+img { 
+    border: 0;
+}
+/*end reset*/
+
+.wrapper {
+    width: 1000px;
+    margin: 0 auto;
+}
+.nav {
+    width: 1000px;
+    height: 62px;
+    margin: 50px auto;
+    font-size: 0;
+    background: #222;
+}
+.nav li {
+    display: inline-block;
+    text-align: center;
+}
+.nav li a {
+    font: 14px/62px Microsoft YaHei;
+    display: block;
+    width: 80px;
+    height: 62px;
+    position: relative;
+}
+.nav li a:hover {
+    color: #eee;
+}
+.nav li a:after {
+    content: '';
+    display: block;
+    width: 0;    
+    height: 3px;
+    background: #0cd;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+}
+.nav li a:hover:after {
+    width: 100%; 
+    left: 0;
+    transition: .4s;
+}
+
+</style>
+</head>
+<body>
+    <ul class="nav">
+        <li><a href="#">首页</a></li>
+        <li><a href="#">博文</a></li>
+        <li><a href="#">前端技术</a></li>
+        <li><a href="#">交互设计</a></li>
+        <li><a href="#">视觉设计</a></li>
+        <li><a href="#">用户研究</a></li>
+        <li><a href="#">设计茶吧</a></li>
+        <li><a href="#">团队生活</a></li>
+        <li><a href="#">交流会</a></li>
+        <li><a href="#">关于我们</a></li>
+    </ul>
+</body>
+</html>
+
+
+

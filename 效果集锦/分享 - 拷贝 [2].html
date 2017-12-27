@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>生成二维码</title>
+        <style>
+			#qrcode{margin:0 auto;margin-left:100px;}
+			#send{cursor: pointer;}
+		</style>
+        <script src="js/qrcode.js"></script>
+    </head>
+    <body>
+        <div id="qrcode"></div>
+        <input type="text" id="getval"/> <button id="send">点击更换验证码</button>
+    </body>
+    <script>
+window.onload =function(){
+        var qrcode = new QRCode(document.getElementById("qrcode"), {
+            width : 96,//设置宽高
+            height : 96
+        });
+        qrcode.makeCode("http://www.baidu.com");
+        document.getElementById("send").onclick =function(){
+            qrcode.makeCode(document.getElementById("getval").value);
+        }
+    }
+
+    </script>
+</html>

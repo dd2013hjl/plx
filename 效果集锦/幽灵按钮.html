@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        background-color: rgba(38,50,56,1);
+    }
+    html,body{
+        height: 100%;
+    }
+    div{
+        width: 200px;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+        color: rgba(255,255,255,.1);
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,50%);
+        border: rgba(255,255,255,.03) solid 1px;
+        cursor: pointer;
+        perspective: 500px;
+        transform-origin: left top;
+    }
+    div span{
+        display: block;
+        position: absolute;
+        background-color: green;
+    }
+    div span:nth-child(1){
+        top: -1px;
+        left: -300px;
+        width: 0px;
+        height: 1px;
+    }
+    div span:nth-child(2){
+        top: -100px;
+        right: -1px;
+        width: 1px;
+        height: 0px;
+
+    }
+    div span:nth-child(3){
+        top: 51px;
+        right: -300px;
+        width: 0px;
+        height: 1px;
+    }
+    div span:nth-child(4){
+        top: 100px;
+        left: -1px;
+        width: 1px;
+        height: 0px;
+    }
+    div:hover{
+        color: green;
+        border: transparent solid 1px;
+        transition: all .1s linear;
+        animation: _div 1s ease-out 0s 1 alternate forwards; ;
+    }
+    div:hover span:nth-child(1){
+        width: 202px;
+        left: -1px;
+        transition: all .3s linear;
+    }
+    div:hover span:nth-child(2){
+        height: 52px;
+        top: -1px;
+        transition: all .3s linear;
+    }
+    div:hover span:nth-child(3){
+        width: 202px;
+        right: -1px;
+        transition: all .3s linear;
+    }
+    div:hover span:nth-child(4){
+        height: 52px;
+        top: -1px;
+        transition: all .3s linear;
+    }
+</style>
+<body>
+    <div>
+        幽灵按钮
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</body>
+</html>

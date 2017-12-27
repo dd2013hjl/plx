@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>操作dom</title>
+	<style type="text/css">
+
+		#div {position: fixed;top:50%;left:50%;transform: translate3d(-50%,-50%,0);width:200px;height:200px;background-color:red;}
+	</style>
+</head>
+<body>
+	<ul id="test-ul">
+    <li class="js">JavaScript</li>
+    <li name="book">Java &nbsp; JavaScript</li>
+</ul>
+<button id="hh">点我</button>
+<div id="div">我是一个可以显示和隐藏的div</div>
+
+<div id="test-div">
+    <ul>
+        <li><span>JavaScript</span></li>
+        <li><span>Python</span></li>
+        <li><span>Swift</span></li>
+    </ul>
+</div>
+<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+$(function(){
+	$("#hh").click(function(){
+			$("#div").toggle();
+			});
+	var ul=$("#test-div>ul");
+	ul.append('<li><span>aaaaaaa<span></li>')
+	})
+
+console.log($("#test-ul li[name=book]").text());
+console.log($("#test-ul li[name=book]").html());
+</script>
+</body>
+</html>

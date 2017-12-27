@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>运用jquery实现表格动态增删改查</title>
+		<style>
+			#js_stu_tb {
+				width: 500px;
+				margin-top: 10px;
+			}
+			
+			#js_stu_tb .stu_no {
+				width: 80px;
+			}
+			
+			#js_stu_tb .stu_name {
+				width: 80px;
+			}
+			
+			#js_stu_tb .stu_age {
+				width: 80px;
+			}
+			
+			#js_stu_tb .op {
+				width: 180px;
+			}
+			
+			#js_stu_tb input[type="text"] {
+				width: 90%;
+			}
+			
+			#js_stu_tb input[type="button"] {
+				margin-left: 5px;
+			}
+		</style>
+	<script id="jquery_183" type="text/javascript" class="library" src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	</head>
+	<body>
+		<div style="float:left;">
+			<span><b>学生信息表</b></span>
+		
+		<br/>
+		    
+		关键字：
+		<input id="js_keyword_text" type="text" />
+		<input id="js_searchstu_btn" type="button" value="查询"/>
+		<input id="js_addstu_btn" type="button" value="新增" style="margin-left:10px;"/>
+		<table id="js_stu_tb" border="1" >
+			<thead>
+				<tr>
+					<th class="stu_no">学号</th>
+					<th class="stu_name">姓名</th>
+					<th class="stu_age">年龄</th>
+					<th class="op">操作</th>
+				</tr>
+			</thead>
+			<tbody id="js_hide_tby">
+					<tr style="display:none;">
+						<td class="stu_no"><input type="text"/></td>
+						<td class="stu_name"><input type="text"/></td>
+						<td class="stu_age"><input type="text"/></td>
+						<td class="op" align="center">
+							<input class="js_stusave_btn" type="button" value="保存"/>
+							<input class="js_stuedit_btn" type="button" value="修改" style="display:none;"/>
+							<input class="js_studel_btn" type="button" value="删除"/>
+						</td> 
+					</tr>
+			<tbody/>
+			<tbody id="js_stuinfo_tby">
+					<tr>
+						<td class="stu_no">M201676001</td>
+						<td class="stu_name">李思思</td>
+						<td class="stu_age">24</td>
+						<td class="op" align="center">
+							<input class="js_stusave_btn" type="button" value="保存" style="display:none;"/>
+							<input class="js_stuedit_btn" type="button" value="修改"/>
+							<input class="js_studel_btn" type="button" value="删除"/>
+						</td> 
+					</tr>	
+			</tbody>
+		</table>
+		</div>
+		<script>
+			$(document).ready(function(){
+	
+	var tb = $("#js_stu_tb");
+	
+	//添加学生
+	$("#js_addstu_btn").click(function(){
+		var hideTr = $("#js_hide_tby",tb).children().first();
+		var newTr = hideTr.clone().show();
+		$("#js_stuinfo_tby",tb).append(newTr);
+	});
+	
+	//保存学生信息
+	$(".js_stusave_btn",tb).die('click').live('click',function(){
+			var tr = $(this).parent().parent();
+		$("input[type='text']",tr).each(function(i,el){
+			el = $(el);
+			el.parent().text(el.val());
+			el.remove();
+		});
+		$(".js_stusave_btn",tr).hide();
+		$(".js_stuedit_btn",tr).show();
+	});
+	
+	//修改学生信息
+	$(".js_stuedit_btn",tb).die('click').live('click',function(){
+		var tr = $(this).parent().parent();
+		$("td:not('.op')",tr).each(function(i,el){
+			el = $(el);
+			var html = "<input value='"+el.text()+"' type='text'>";
+			el.html(html);
+		});
+		$(".js_stuedit_btn",tr).hide();
+		$(".js_stusave_btn",tr).show();
+	});
+	
+	//删除学生信息
+	$(".js_studel_btn",tb).die('click').live('click',function(){
+		$(this).parent().parent().remove();
+	});
+	
+	//根据关键字查询学生信息
+	$("#js_searchstu_btn").click(function(){
+		 var keyword = $("#js_keyword_text").val();
+		 var tby = $("#js_stuinfo_tby",tb);
+		if(!!!keyword){
+			tby.children().show();
+		}else{
+			tby.children().hide();
+			$("td:contains('"+keyword+"')",tby).each(function(i,el){
+				$(el).parent().show();
+			});
+		}
+		
+		
+	});
+	
+});
+		</script>
+	</body>
+</html>

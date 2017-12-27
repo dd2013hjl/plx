@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片自适应</title>
+	<style>
+/*弹出框*/
+.popup{background-color: rgb(0, 0, 0);position: fixed;left: 0;right: 0;top: 0;bottom: 0;display: block;z-index: 1000;}
+.fldiv{position: absolute;top:0;right:0;bottom:0;left:0;overflow:hidden;background-color: rgb(0,0,0);}
+
+.fldivheader{position: relative;height:64px;width:100%;padding:10px 0;margin-bottom: auto;text-align:center;}
+.fldivfooter{position: absolute;height:30px;width:100%;padding:19px 0;margin-bottom: auto;text-align: center;bottom:10px;}
+.fldivfooter span{color:#fff;font-size:16px;}
+.fldivheader span{display: inline-block;font-size:18px;line-height:22px;letter-spacing:2px;color:#fff;}
+.fldivheader a{position: absolute;top:10px;right:20px;color:#fff;}
+.fldivcontent{position: absolute;top:50px;left:0;right:0;bottom:0;}
+.icon-arrow{position: absolute;top:0;bottom:0;z-index: 1;width:100px;display: block;}
+.prev{background: url(img/thumb-1.jpg) no-repeat center center;}
+.next{right:0;background: url(img/thumb-2.jpg) no-repeat center center;}
+
+.mask{position:absolute;left:100px;right:100px;top:0;bottom:0;overflow: hidden;text-align: center;}
+.aside{position: relative;width:320px;height:100%;margin-left: auto;background-color:#151515;padding:62px 0 0;overflow-y: auto;color:#fff;}
+.aside_actions{position:fixed;right:0;top:0;z-index:1;width:320px;height:62px;background-color:#2b2b2b;}
+
+.aside_actions ul{width:100%;color:#fff;height:100%;}
+.aside_actions ul li a{color:#fff;display: inline-block;width:60px;}
+.aside_actions ul li a.xiazai{background: url(images/download.png)no-repeat left center;}
+.aside_actions ul li a.dianzanliang{background: url(images/dianzan.png)no-repeat left center;}
+.aside_actions ul li{width: 33.33%;float:left;color:#fff;font-size:12px;height:100%;line-height:62px;text-align: right;}
+.aside_actions ul li:nth-of-type(3){background: url(images/close2.png)no-repeat 55px center;background-size:24px;cursor: pointer;}
+
+
+/*图片自适应*/
+.img-responsive{display: inline-block;height: auto;max-width:100%;position: relative;top:50%;text-align: center;transform: translateY(-50%)}
+	</style>
+</head>
+<body>
+		<div class="popup clearfix">
+		<div class="fldiv">
+			<div class="fldivheader">
+				<span>2/999</span>
+				<a href="#">
+					<img src="css/images/fangda.png">
+				</a>
+			</div>
+			<div class="fldivcontent">
+				<a href="#" class="icon-arrow prev"></a>
+				<a href="#" class="icon-arrow next"></a>
+				<a  class="mask sy_pic" id="imgcontainer">
+					<img src="./img/image-2.jpg" class="img-responsive" >
+				</a>
+			</div>
+			<div class="fldivfooter">
+				<span>DSC08843.JPG</span>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

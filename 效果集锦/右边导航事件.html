@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" href="../css/reset.css">
+<style>
+	*{padding:0;margin:0;}
+	.bg{position: absolute;left:0;top:0;right:0;bottom:0;background-color:rgba(70,232,247,.7);overflow: hidden;}
+	.nav1{position:fixed;right:0;top:200px;width:70px;height:200px;}
+	.nav1 li{width:40px;height:40px;background-color:pink;margin-top:10px;text-align: center;float:right;position: relative;padding:5px;}
+	.nav1 li img{width:30px;height:30px;margin-top: 5px;}
+	.content{position: absolute;width:200px;height:200px;border:1px solid red;top:0;left:-220px;display: none;}
+	.txt{position:absolute;top:5px;line-height: 40px;right:-100px;height:40px;cursor: pointer;color:#fff;}
+	</style>
+</head>
+
+<body>
+<div class="bg">
+	<ul class="nav1 clearfix">
+		<li>
+			<img src="./img/map (1).png">
+			<div class="content">
+				
+			</div>
+		</li>
+		<li>
+			<img src="./img/map (3).png">
+			<p class="txt">这是我的号码</p>
+		</li>
+		<li>
+			<img src="./img/map (5).png">
+		</li>
+		<li>
+			<img src="./img/map (7).png">
+		</li>
+	</ul>
+</div>
+<script src="../jquery/js/jquery-3.2.1.js"></script>
+<script>
+	$(function(){
+		$(".nav1").find("li").eq(0).hover(function(){
+			$(this).animate({width:"60px"},100)
+			$(this).find("img").attr("src","./img/map (2).png");
+			
+		});
+		$(".nav1").find("li").eq(1).hover(function(){
+			$(this).animate({width:"150px"},200).css({"text-align":"left","border":"1px solid red","backgroundColor":"cyan"})
+			$(this).find("img").attr("src","./img/map (4).png");
+			$(this).find(".txt").animate({right:"0"},100)
+			
+		});
+		$(".nav1").find("li").eq(2).hover(function(){
+			$(this).animate({width:"60px"},100)
+			$(this).find("img").attr("src","./img/map (6).png");
+			
+		});
+		$(".nav1").find("li").eq(3).hover(function(){
+			$(this).animate({width:"60px"},100)
+			$(this).find("img").attr("src","./img/map (8).png");
+		})
+		
+//		鼠标移开事件
+		$(".nav1").find("li").eq(0).mouseleave(function(){
+			$(this).find("img").delay(100).attr("src","./img/map (1).png")
+			$(this).animate({width:"40px"},100);
+		});
+		$(".nav1").find("li").eq(1).mouseleave(function(){
+			$(this).animate({width:"40px"},200).css({"text-align":"center","border":"none","backgroundColor":"pink"})
+			$(this).find("img").attr("src","./img/map (3).png");
+				$(this).find(".txt").animate({right:"-100px"},100)
+			
+		});
+		$(".nav1").find("li").eq(2).mouseleave(function(){
+			$(this).find("img").attr("src","./img/map (5).png");
+				$(this).animate({width:"40px"},100)
+			
+		});
+		$(".nav1").find("li").eq(3).mouseleave(function(){
+			$(this).find("img").attr("src","./img/map (7).png");
+				$(this).animate({width:"40px"},100)
+		})
+	})
+	
+	</script>
+</body>
+</html>

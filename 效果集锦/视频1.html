@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>BigPipe</title>
+<script>
+	var BigPipe={
+		view:function(pInfo){
+			document.getElementById(pInfo.pid).innerHTML=pInfo.html;
+		}
+	}
+	</script>
+</head>
+
+<body>
+<div>我是内容阿 </div>
+<div id="pl1"></div>
+<div id="pl2"></div>
+<div id="pl3"></div>
+<div id="pl4"></div>
+</body>
+<script>
+	BigPipe.view({pid:'pl1',html:'<div>我是pl1</div>',js:[],css:[],data:{}})
+	</script>
+<script>
+	BigPipe.view({pid:'pl2',html:'<div>我是pl2</div>',js:[],css:[],data:{}})
+	</script>
+</html>

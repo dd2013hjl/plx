@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>图片上传3</title>
+</head>
+
+<body>
+<input type="file" name="imageFile" id="imageFile" onchange="fileSelected()" />
+<form id="uploadForm" enctype="multipart/form-data" method="post" action="XXXXXX">
+     <input hidden="hidden" name="param" value="test" />
+</form>
+<script>
+	window.fileSelected = function() {
+    var _this = $(this);
+    var file = this.files[0];
+    var rFilter = /^(image\/bmp|image\/gif|image\/jpeg|image\/png|image\/tiff)$/i;
+    if(!rFilter.test(file.type)) {
+        alert("文件格式必须为图片");
+        return;
+    }
+    /*开始进行网络加载*/
+    _this.css("display", "none");    //目的是为了屏蔽点击事件
+    var reader = new FileReader() , image = new Image() ,
+        canvas = document.createElement("canvas") , 
+		ctx = canvas.getContext("2d");
+    reader.onload = function() {        //文件加载完成
+        var url = reader.result;
+        image.src = url;
+    };
+    image.onload = function() {        //图片加载完成
+        var w = image.naturalWidth , h = image.naturalHeight ,
+            scale = 3;        //图片缩放比例，这里是把图片大小高宽均缩小3倍
+        canvas.width = w / scale;
+        canvas.height = h / scale;
+        ctx.drawImage(image, 0 , 0 , w , h ,
+            0 , 0 , canvas.width , canvas.height);
+        fileUpload();    
+    };
+    reader.readAsDataURL(file);        //用文件加载器加载文件
+    function fileUpload() {        //文件上传方法
+        var quality = 0.3;        //图片的质量，这里设置的是0.3
+        var data = canvas.toDataURL("image/jpeg", quality);//获取画布图片，并且要jpg格式
+        data = data.split(',')[1];
+        data = window.atob(data);
+        var ia = new Uint8Array(data.length);
+        for(var i = 0; i < data.length; i++) {
+            ia[i] = data.charCodeAt(i);
+        }
+        var blob = new Blob([ia], {            //以上均为二进制参数处理，从而获取一个blob对象
+            type: "image/jpeg"
+        });
+        var fd = new FormData(document.getElementById("uploadForm"));
+        fd.append("XXX"  , blob , "upload.jpg");    //向form中加入图片数据，name属性是XXX，文件名是upload.jpg
+        var xhr = new XMLHttpRequest();
+        xhr.addEventListener('load', function(resUpload) {
+            _this.css("display", "");
+            //请求成功
+        }, false);
+        xhr.addEventListener('error', function(){
+            _this.css("display", "");
+            //请求失败
+        }, false);
+        xhr.addEventListener('abort', function(){
+            _this.css("display", "");
+            //上传终止
+        }, false);
+        xhr.open('POST', "http://XXXXXXXXXXXXX");//请求地址
+        xhr.send(fd);//发送
+    }
+};
+	</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>每次滚动到该位置都触发</title>
+<style>
+	*{padding:0;margin: 0;}
+	.wrapper{float:left;overflow: hidden;}
+	#a1,#a2,#a3{position: absolute;top:0;left:0;right:0;bottom:0;align-self: }
+	#a1{background-color:pink;}
+	#a2{background-color: cyan;}
+	#a3{background-color:purple;}
+	.an1{z-index:999;}
+	</style>
+</head>
+
+<body>
+<div class="wrapper">
+	<div id="a1" class="an1">
+	11
+</div>
+<div id="a2">22</div>
+<div id="a3">33</div>
+</div>
+<script src="js/jquery-3.1.1.js"></script>
+<script>
+	var t1=$("#a1").offset().top;
+var t1=$("#a2").offset().top;
+var t1=$("#a3").offset().top;
+$(window).scroll(function(){
+var top=$(window).scrollTop();
+if(top>t1&&top<t2){
+$("#a1").addClass("an1");
+}
+if(top>t2&&top<t3){
+$("#a2").addClass("an1");
+}
+if(top>t3){
+$("#a3").addClass("an1");
+}
+});
+	</script>
+</body>
+</html>

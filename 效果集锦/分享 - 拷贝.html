@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>生成二维码</title>
+        <style>
+			#qrcode{margin:0 auto;margin-left:100px;}
+		</style>
+        <script type='text/javascript' src='http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js'></script>
+        <script type="text/javascript" src="http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+        <script src="js/qrcode.js"></script>
+    </head>
+    <body>
+        <div id="qrcode"></div>
+    </body>
+    <script>
+//        $("#qrcode").qrcode({
+//            width:64,
+//            height:64,
+//            text:"http://www.ddway.cn:4000/"
+//        })
+        new QRCode(document.getElementById("qrcode"),"https://www.baidu.com/")
+    </script>
+</html>

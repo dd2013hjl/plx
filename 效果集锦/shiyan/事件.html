@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件</title>
+</head>
+<body>
+	<a id="test-link" href="http://www.ddway.cn://4000">点我</a>
+	<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript">
+	var a=$("#test-link");
+	a.on("click",function(){
+		alert("确定跳转到下面的页面吗")
+	},false);
+	//阻止跳转
+	</script>
+</body>
+</html>

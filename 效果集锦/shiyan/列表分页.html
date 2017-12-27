@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+	<meta name="format-detection" content="telephone=no"/>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+    <style>
+        *{padding: 0;margin: 0;}
+        ul{list-style: none;}
+        .box{
+            width: 80%;
+            margin: 10% auto;
+        }
+        .title{text-indent:10px;
+        	border-left:3px solid #f4ea2a;
+			position: relative;
+        }
+        .title a{
+        	position: absolute;
+        	text-decoration: none;
+        	right:0;
+        	font-size:12px;
+        	color: #f4ea2a;
+        	
+        }
+        .title a span{
+        	height:20px;
+        	width: 20px;
+        	display: inline-block;
+        	text-align: left;
+        	background: url(css/images/shuaxin.png) no-repeat right center;
+        	background-size:20px;
+        	vertical-align: -6px;
+        	transition:.2s linear;
+        	margin-left:5px;
+        }
+        .box li{
+            height: 80px;
+            line-height: 35px;
+            border-bottom: 1px solid #ededed;
+            padding:10px 0 10px 15px;
+        }
+         .box li:first-child{padding-top: 20px;}
+        .box li img{width:50px;height: 60px;}
+        .box li:nth-child(n+4){
+            display: none; /*这里说的就是问题一*/
+        }
+        .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+		.clearfix{display:inline-table;}
+		*html .clearfix{height:1%;}
+		.clearfix{display:block;}
+		*+html .clearfix{min-height:1%;}
+
+
+		.fl{float: left;width:50px;}
+		.fr span{line-height:14px;font-size:12px;color:#666;display: inline-block;height:28px;overflow: hidden;}
+		.fr{float:left;margin-left:10px;width:180px;}
+    </style>
+</head>
+<body>
+<div class="box">
+    <p class="title">看过这本书的还看过
+		<a href="#" class="button">换一换<span></span></a>
+    </p>
+    <ul>
+        <li class="clearfix">
+        	<div class="fl">
+        		<img src="css/images/1.jpg">
+        	</div>
+        	<div class="fr">
+				<p>最好的我们</p>
+				<span>耿耿余淮，最好的我们，这是一段关于高中的我们，那时候的你是最好的你，现在的我是最好的我</span>
+        	</div>
+        </li>
+        <li>2222</li>
+        <li>3333</li>
+        <li>4444</li>
+        <li>5555</li>
+        <li>6666</li>
+        <li>777</li>
+        <li>8888</li>
+        <li>9999</li>
+        <li>101010</li>
+        <li>1111111</li>
+        <li>12121212</li>
+    </ul>
+</div>
+
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+    $(function () {
+        var change_step = 'sec';
+        var mum=1;
+        $('.button').on('click',function () {
+        	$(this).find("span").css({
+        		'transform':'rotate('+360*mum+'deg)',
+        		'-moz-transform':'rotate('+360*mum+'deg)',
+        		'-o-transform':'rotate('+360*mum+'deg)',
+        	})
+        	mum++;
+            var list = $('.box li');
+            list.hide();
+            //分类----分成4部分
+            var first = list.slice(0,3);
+            var second = list.slice(3,6);
+            var third = list.slice(6,9);
+            var four = list.slice(9);
+
+            var step = {
+                fir:{el:first,next:'sec'},
+                sec: {el:second,next:'thi'},
+                thi: {el:third,next: 'for'},
+                for:{el:four,next:"fir"}
+            };
+
+            function change(cur) {
+                list.hide();
+                step[cur].el.show();
+                change_step = step[cur].next
+            }
+            change(change_step);
+
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title></title>
+</head>
+<style type="text/css">
+	ul li {
+		list-style: none;
+	}
+	
+	.wrap {
+		margin: 0 auto;
+		width: 600px;
+		height: 150px;
+		overflow: hidden;
+	}
+	
+	.wrap ul {
+		height: 55px;
+	}
+	
+	.wrap ul li {
+		width: 120px;
+		height: 50px;
+		border: 2px solid red;
+		float: left;
+		margin-right: 10px;
+		text-align: center;
+		color: white;
+		font: normal 16px/1.5 "microsoft yahei";
+	}
+	
+	.list1 li {
+		background: black;
+	}
+	
+	.list2 li {
+		background: grey;
+	}
+	
+	.list3 li {
+		background: lightgrey;
+	}
+</style>
+
+<body>
+	<div class="wrap">
+		<div class="container" id="j-media-list">
+			<ul class="list1">
+				<li>logo1</li>
+				<li>logo1</li>
+				<li>logo1</li>
+				<li>logo1</li>
+			</ul>
+			<ul class="list2">
+				<li>logo2</li>
+				<li>logo2</li>
+				<li>logo2</li>
+				<li>logo2</li>
+			</ul>
+			<ul class="list3">
+				<li>logo3</li>
+				<li>logo3</li>
+				<li>logo3</li>
+				<li>logo3</li>
+			</ul>
+		</div>
+	</div>
+
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function() {
+
+			var scrollListUp = function(list_id, height) { //list_id为需要滚动的div
+				var _scrollList = $('#' + list_id);
+				var _scrollHeight = height;
+				var scrollList = function() {
+					_scrollList.animate({
+						'margin-top': '-' + _scrollHeight
+					}, function() {
+						_scrollList.css({
+							'margin-top': '1px' //将滚动的div重新定位，若不定位，将失去滚动效果
+						});
+						_scrollList.find('ul:lt(1)').appendTo(_scrollList); //将位于顶部的广告位移动到底部
+					})
+				}
+				var timer = setInterval(scrollList, 2000); //设置定时器
+				_scrollList.mouseenter(function() {
+					clearInterval(timer);
+				})
+				_scrollList.mouseleave(function() {
+					timer = setInterval(scrollList, 2000);
+				})
+			}
+			scrollListUp('j-media-list', 65);
+		})
+	</script>
+</body>
+</html>

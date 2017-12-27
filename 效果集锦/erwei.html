@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>二维码</title>
+	<style type="text/css">
+
+
+
+	</style>
+</head>
+<body>
+	<form id="form1" runat="server">
+   
+                    <div id="qrcode">
+                        <input type="hidden" id="hidUrl" runat="server" />
+                    </div>
+          
+                <div class="content clearfix" style="width:100%;height:50px;border:1px solid red;">
+                    		<textarea runat="server" id="txtRemark" style="width: 70%; height: 100%" maxlength="400" readonly="readonly"></textarea>
+           
+            			<input type="button" class="btnSave" value="复制链接" onclick="copyAddress();" style="width: 20%; height: 40px; margin: 0 auto;" /><br />
+            <label id="lblCopy" style="display: none; color: green;">复制成功！</label>
+                </div>
+
+</form>
+</body>
+</html>

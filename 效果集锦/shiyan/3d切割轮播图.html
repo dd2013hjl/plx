@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 560px;
+            height: 300px;
+            margin: 100px auto;
+            position: relative;
+        }
+        ul{
+            list-style: none;
+
+        }
+        ul li{
+            width: 112px;
+            height: 300px;
+            transform-style: preserve-3d;
+            /*transform: rotateY(-30deg) rotateX(-30deg);*/
+            transition: transform 1s;
+            float: left;
+            position: relative;
+        }
+        ul li span{
+            position: absolute;
+            font-size: 50px;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+        }
+        span:nth-child(1){
+            transform: translateZ(150px);
+            background: url("http://cdn.attach.qdfuns.com/notes/pics/201704/30/103959tdrdcrl7uxob0g6m.jpg");
+        }
+        span:nth-child(2){
+            transform: translateY(-150px) rotateX(90deg);
+            background: url("http://cdn.attach.qdfuns.com/notes/pics/201704/30/103959t1urw4e11f4q1lrl.jpg");
+        }
+        span:nth-child(3){
+            transform: translateZ(-150px) rotateX(180deg);
+            background: url("http://cdn.attach.qdfuns.com/notes/pics/201704/30/103959qpqeu4qiz44u0k0i.jpg");
+        }
+        span:nth-child(4){
+            transform: translateY(150px) rotateX(-90deg);
+            background: url("http://cdn.attach.qdfuns.com/notes/pics/201704/30/103959ltl3tz94jph96j66.jpg");
+        }
+        li:nth-child(2) span{
+            background-position: -112px 0;
+        }
+        li:nth-child(3) span{
+            background-position: -224px 0;
+        }
+        li:nth-child(4) span{
+            background-position: -336px 0;
+        }
+        li:nth-child(5) span{
+            background-position: -448px 0;
+        }
+
+        .arrow{
+            position: absolute;
+            top: 50%;
+            left: 0;
+            margin-top: -30px;
+            width: 40px;
+            height: 60px;
+            line-height: 60px;
+            font-size: 40px;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, .5);
+        }
+        .right{
+            left: auto;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li>
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+            </li>
+            <li>
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+            </li>
+            <li>
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+            </li>
+            <li>
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+            </li>
+            <li>
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+            </li>
+        </ul>
+            <a class="arrow left">&lt;</a>
+            <a class="arrow right">&gt;</a>
+    </div>
+</body>
+<script>
+        var lis=document.querySelectorAll('li');
+        var left=document.querySelector('.left');
+        var right=document.querySelector('.right');
+        var index=0;
+
+        var isEnd=true;
+        /*左键点击*/
+        left.onclick=function(){
+            if(isEnd){
+                isEnd=false;
+            index++;
+            /*以90度翻转*/
+            var x=index*90;
+            for(var i=0;i<lis.length;i++){
+                /*循环给每一个li添加transform属性 并且给每一个添加动画延迟*/
+                lis[i].style.transform="rotateX("+x+"deg)";
+                lis[i].style.transitionDelay=i*0.2+"s";
+            }
+            }
+        }
+        /*右键点击*/
+        right.onclick=function(){
+            if(isEnd){
+                isEnd=false;
+            index--;
+            /*以90度翻转*/
+            var x=index*90;
+            for(var i=0;i<lis.length;i++){
+                /*循环给每一个li添加transform属性 并且给每一个添加动画延迟*/
+                lis[i].style.transform="rotateX("+x+"deg)";
+                lis[i].style.transitionDelay=i*0.2+"s";
+            }
+            }
+        }
+        //只有最后一个li的动画结束，才能表示所有的动画结束  transitionend 过渡结束的事件。判断动画结束与否
+        lis[lis.length-1].addEventListener('transitionend',function(){
+            /*类似于节流阀*/
+            isEnd=true;
+        })
+
+</script>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link href="css/base.css">
+<style>
+	/*弹出层*/
+.popup{background-color: rgba(0, 0, 0, 0.3);position: fixed;left: 0;right: 0;top: 0;bottom: 0;display: block;z-index: 1000;}
+.popupmain{background-color: white;font-family: 'Microsoft Yahei';width: 1200px;padding:40px 30px;border-radius: 5px;text-align: center;position: fixed;left: 50%;top: 50%;margin-left: -167px;margin-top: -200px;overflow: hidden;z-index: 2000;}
+.popupmain .popupcontent{width:300px;margin:0 auto;text-align: center;}
+.popupcontent p{border-bottom:1px solid #f0f0f0;display:inline-block;font-size:18px;line-height: 48px;}
+.popupcontent img{width:180px;height:180px;margin-top:20px;margin-bottom:20px;}
+.popupcontent a{color:#fff;background-color:#e52c31;border-radius:5px;display: inline-block;width:210px;line-height:48px;}
+
+.close{display: block;position: absolute;top:10px;right:10px;width:30px;height:30px;background:url(images/close.png)no-repeat;cursor: pointer;}
+	</style>
+</head>
+<body>
+	<div class="popup">
+		<div class="popupmain">
+			<div class="popupcontent">
+				<p>创建成功，快发布给小伙伴吧</p>
+				<img src="css/images/popup.png" alt="我是二维码">
+				<a href="#">确定</a>
+				<span class="close"></span>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

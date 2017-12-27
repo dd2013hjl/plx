@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>联动菜单</title>
+</head>
+<body>
+	<div id="category"></div>
+	<script type="text/javascript">
+
+	// 数据
+	var categories=[
+	{"id":10,"name":'学校美食',"children":[
+		{"id":101,"name":"花甲","children":[
+			{"id":1011,"name":"龙门花甲"},
+			{"id":1012,"name":"三回头花甲"},
+			{"id":1013,"name":"茜茜花甲"}
+		]},
+		{"id":102,"name":"温州瘦肉丸"},
+		{"id":103,"name":"重庆鸡公煲"},
+		{"id":104,"name":"烤串","children":[
+			{"id":1041,"name":"烤肠"},
+			{"id":1042,"name":"烤面筋"},
+			{"id":1043,"name":"烤鸡翅"},
+			{"id":1044,"name":"炸鸡柳"},
+			{"id":1045,"name":"炸鸡排"},
+			{"id":1046,"name":"烤香蕉"},
+		]},
+	]},
+	{"id":20,"name":"桂花藕","children":[
+		{"id":201,"name":"桂花藕"},
+		{"id":202,"name":"荷香糯米鸡"},
+		{"id":203,"name":"石锅粉丝"},
+		{"id":204,"name":"酸辣土豆丝"}
+	]}
+	];
+	(function(arr){
+		var select=document.createElement("select");
+		select.add(new Option("-请选择-",-1));
+		// 遍历arr中的每个商品类别的对象
+		for(var i=0;i<arr.length;i++){
+			//将option追加到select中
+			select.add(
+				new Option(arr[i].name,arr[i].id)
+				);
+		}
+		var fun=arguments.callee;
+		//为select绑定onchange事件
+		select.onchange=function(){
+			//获得this的parent
+			var parent=this.parentNode;
+			//反复:只要this不是parent的最后一个子节点
+			while(this!=parent.lastChild){
+				//删除parent下的最后一个子节点
+				parent.removeChild(parent.lastChild);
+			}
+			// 获得当前select的下标
+			var i=this.selectedIndex;
+			//因为i=1代表的是第二张
+			//获得arr中i-1位置的商品类别对象的children,保存在变量subCate
+			if(i>0){
+				var subCate=arr[i-1].children;
+				// 调用fun(subCate)
+				subCate!=undefined&&fun(subCate);
+			}
+		}
+		// 将select追加到id为category的父元素下
+		document.getElementById('category').appendChild(select);
+	})(categories);
+	</script>
+</body>
+</html>

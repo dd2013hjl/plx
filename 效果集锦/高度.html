@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>算高度</title>
+<style>
+	#box1{width:200px;height:1200px;border:1px solid red;}
+	</style>
+</head>
+
+<body>
+<div id="box1">
+	
+</div>
+<script>
+	
+	var test=document.getElementById("box1");
+//	alert(test.clientHeight);//1200
+//	alert(test.offsetHeight);//1202 这是加上border值
+//	alert(test.offsetTop);//0
+//	alert(test.offsetLeft);//0
+	alert(test.style.paddingLeft);
+	</script>
+</body>
+</html>

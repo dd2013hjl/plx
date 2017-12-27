@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+		<style>
+			body {
+				background: #ffffff;
+			}
+			
+			h1 {
+				text-align: center;
+			}
+			
+			#vue-test {}
+			
+			#wrapper {
+				display: flex;
+				justify-content: center;
+			}
+			
+			table {
+				border: 1px solid #ccc;
+				padding: 10px;
+				border-radius: 8px;
+			}
+			
+			td {
+				background: #5bba6e;
+				color: #fff;
+				font-size: 25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 4px;
+				vertical-align: middle;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+	<div id="vue-test">
+		<h1>
+			第{{ levelText }}关
+	   </h1>
+	   <div id="wrapper">
+		   <table>
+			  <tr v-for="row in table">
+				<td v-for="v in row" @click="choose(v)">{{ textMap[v] }}</td>
+			  </tr>
+		   </table>
+	   </div>
+	</div>
+	<script>
+	new Vue({
+		el: "#vue-test",
+		data: {
+			table: [],
+			textMap: ['1', '2'],
+			level: 1
+			},
+		computed: {
+			levelText: function() {
+				return this.level > 10 ? this.level : "12345678910".split('')[this.level - 1]
+		}
+		},
+		methods: {
+			choose: function(v) {
+			if(v) {
+				this.level++
+					this.generateTable()
+			}
+		},
+			generateTable: function() {
+				var size = this.level + 1
+				var table = new Array(size).fill(0).map(function() {
+					return new Array(size).fill(0)
+				})
+				var random = Math.random() * size * size | 0
+				var row = random / size | 0
+				var col = random - row * size
+				table[row][col] = 1
+				this.table = table
+			}
+		},	
+			created: function() {
+				this.generateTable()
+			}
+
+		})
+	</script>
+	</body>
+</html>

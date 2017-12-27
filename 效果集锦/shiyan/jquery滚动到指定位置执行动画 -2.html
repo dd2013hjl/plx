@@ -1,0 +1,123 @@
+<!doctype html>  
+<html>  
+<head>  
+<meta charset="utf-8">  
+<title>sas</title>  
+<script type="text/javascript" src="js/jquery-3.1.1.js"></script>  
+<style type="text/css">  
+*{
+    margin:0px;
+    padding:0px;
+    border:0px;
+}
+li{
+    list-style-type:none;
+}
+#wrapper{
+    margin:0px auto;
+}
+#show-area{
+    width:800px;/*width 和 height 其实就是图片的高和宽*/
+    height:450px;
+    position:relative;
+    overflow:hidden;
+    margin:100px auto;
+}
+#show-area ul{
+    position:relative;
+    width:3200px;
+}
+
+
+#show-area ul li{
+    width:800px;
+    height:450px;
+    float:left;
+}
+#controler{
+    position:absolute;
+    width: 150px;
+    height: 20px;
+    left: 969px;
+    top: 530px;
+}
+#controler div{
+    margin-left:.5em;
+    float:left;
+    height:15px;
+    width:15px;
+    border-radius:100%;
+    background:#ccc;
+}
+.onclick{
+    background:#fff !important;/*在切换时我们利用添加一个类的方法去改变按钮的背景颜色而，因为按钮初始状态下是用id 选择器设定背景颜色的，所以这里加上一个important*/
+}
+
+</style>  
+</head>  
+  
+<body>  
+<div id="wrapper">
+    <div id="show-area">
+      <ul>
+        <li id="first"><a href="#"><img src="css/images/1.jpg"></a></li>
+        <li><a href="#"><img src="css/images/image-1.jpg"></a></li>
+        <li><a href="#"><img src="css/images/timg.jpg"></a></li>
+      </ul>
+  </div>
+  <div id="controler">
+    
+  </div>
+</div>
+<div id="see"></div>  
+<script>
+	$(function(){
+    var currentIndex = 0;
+    var imgtotal = $("#show-area ul li").length;
+    var autoPlayIndex = 0;
+    var imgwidth = $("#show-area ul li").width();//获取第一个li的长度用作动画切换效果
+    
+    
+    //通过循环更具图片数量自动添加控制按钮方便以后后台上传图片所用
+    for(var i = 0 ; i<imgtotal ; i++){
+        
+        $("#controler").append("<div>" + "</div>");
+    };
+    
+    
+    $("#controler div").eq(0).addClass("onclick");
+    $("#controler div").each(function() {
+        $(this).click(function(){
+            autoPlayIndex = $(this).index();//为模拟点击索引值赋值
+            Change(this);
+        });
+    });
+    function Change(obj){
+          currentIndex = $(obj).index();
+        $("#show-area ul").animate({left:-currentIn
+									dex * imgwidth},800);//这里就是切换的部分了当我按地一个按钮的时候它的左属性是没有变化的，而当我按第二个按钮的时候（第二个按钮的索引值是1）ul 的left属性就会减少第1个图片的宽度也就是向左面缩800px，这样第二张图片就显示出来啦，之后的也是如此，这就是为什么要设置ul 属性为relative的意义，并且ul 里面的 li 也要设置为左浮动这样才会有效果
+        $("#controler div").eq(currentIndex).addClass("onclick").siblings().removeClass("onclick");
+    }
+    
+    var auto = setInterval(function(){
+          autochange();
+        },6000);
+        
+    function autochange(){
+        autoPlayIndex = (autoPlayIndex + 1) % imgtotal;
+        $("#controler div").eq(autoPlayIndex).trigger("click");
+    };
+    
+    $("#show-area li,#controler div").mouseover(function(){
+        clearInterval(auto);
+          
+    }).mouseout(function(){
+        auto = setInterval(function(){
+          autochange();    
+        },6000)
+        
+    })
+}); 
+	</script>
+</body>  
+</html> 
